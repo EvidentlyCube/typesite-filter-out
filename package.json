@@ -1,0 +1,43 @@
+{
+	"name": "typesite-filter-out",
+	"version": "1.0.0",
+	"description": "Typesite plugin to filter out unnecessary files",
+	"main": "index.js",
+	"scripts": {
+		"build": "tsc",
+		"test": "mocha -r ts-node/register index.test.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/EvidentlyCube/typesite-filter-out.git"
+	},
+	"keywords": [
+		"typesite",
+		"typescript",
+		"static-website-generator",
+		"website",
+		"static",
+		"generator",
+		"filter"
+	],
+	"author": "Maurycy Zarzycki <maurycy@evidentlycube.com> (https://www.evidentlycube.com)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/EvidentlyCube/typesite-filter-out/issues"
+	},
+	"homepage": "https://github.com/EvidentlyCube/typesite-filter-out#readme",
+	"dependencies": {
+		"@types/multimatch": "^2.1.2",
+		"multimatch": "latest",
+		"typesite": "^0.2.1"
+	},
+	"devDependencies": {
+		"@types/chai": "^4.1.2",
+		"@types/mocha": "^2.2.48",
+		"@types/node": "^9.4.7",
+		"chai": "^4.1.2",
+		"mocha": "^5.0.4",
+		"ts-node": "^5.0.1",
+		"typescript": "^2.7.2"
+	}
+}
