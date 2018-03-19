@@ -1,11 +1,15 @@
 {
 	"name": "typesite-filter-out",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Typesite plugin to filter out unnecessary files",
-	"main": "index.js",
 	"scripts": {
 		"build": "tsc",
 		"test": "mocha -r ts-node/register index.test.ts"
+	},
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"engines": {
+		"node": ">=9.0.0"
 	},
 	"repository": {
 		"type": "git",
@@ -29,7 +33,8 @@
 	"dependencies": {
 		"@types/multimatch": "^2.1.2",
 		"multimatch": "latest",
-		"typesite": "^0.2.1"
+		"typesite": "^0.2.1",
+		"typesite-filter-out": "^1.0.1"
 	},
 	"devDependencies": {
 		"@types/chai": "^4.1.2",
