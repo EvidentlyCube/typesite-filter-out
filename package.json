@@ -1,6 +1,6 @@
 {
 	"name": "typesite-filter-out",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Typesite plugin to filter out unnecessary files",
 	"scripts": {
 		"build": "tsc",

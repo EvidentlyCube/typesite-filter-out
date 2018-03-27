@@ -1,4 +1,4 @@
-import {ContentFileCollection, IPlugin, Typesite} from 'typesite';
+import {ArgumentInvalidError, ArgumentNullError, ContentFileCollection, IPlugin, Typesite} from 'typesite';
 import multimatch = require("multimatch");
 
 export type MultimatchFunction = (files: string[], patterns: string[]) => string[];
@@ -15,10 +15,28 @@ export class FilterOutPlugin implements IPlugin {
     ) {
         this._multimatchCallback = multimatchImplementation || multimatch;
 
-        if (patternToFilterOut instanceof RegExp) {
+        if (patternToFilterOut === null){
+            throw new ArgumentNullError('patternToFilterOUt', "Pattern cannot be null");
+
+        } else if (patternToFilterOut instanceof RegExp) {
             this._regexPattern = patternToFilterOut;
-        } else {
+
+        } else if (Array.isArray(patternToFilterOut)){
+            if (patternToFilterOut.length === 0){
+                throw new ArgumentInvalidError("patternToFilterOut", "Multimatch pattern cannot be an empty array")
+            }
+            if (patternToFilterOut.filter(value => typeof value !== "string").length > 0){
+                throw new ArgumentInvalidError(
+                    "patternToFilterOut",
+                    `Multimatch pattern must consist of an array of strings, '${JSON.stringify(patternToFilterOut)}' was given`
+                );
+            }
             this._multimatchPatterns = patternToFilterOut;
+        } else {
+            throw new ArgumentInvalidError(
+                "patternToFilterOut",
+                `Multimatch pattern must be an array, '${JSON.stringify(patternToFilterOut)} (${typeof patternToFilterOut}' was given`
+            );
         }
     }
 

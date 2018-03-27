@@ -27,9 +27,12 @@ The plugin that does the filtering:
 
 #### `constructor`
 
- * `patternToFilterOut :RegExp | string[]` An array of strings to pass to multimatch or a regular expression which is used for filtering
- * *\[Optional\]* `multimatchImplementation :(files: string[], patterns: string[]) => string[]` An optional implementation of multimatch to inject into this class, if null or not defined will use the default multimatch.
+ * **Argument** `patternToFilterOut :RegExp | string[]` An array of strings to pass to multimatch or a regular expression which is used for filtering
+ * **Argument** *\[Optional\]* `multimatchImplementation :(files: string[], patterns: string[]) => string[]` An optional implementation of multimatch to inject into this class, if null or not defined will use the default multimatch.
+ * **Exception** `Typesite.ArgumentNullError` Thrown when `patternToFilterOut` is null
+ * **Exception** `Typeiste.ArgumentInvalidError` Thrown when `patternToFilterOut` is not an instance of `RegExp` or a non-empty array of strings
+ 
  
 ## Note about paths
 
-Matching is done against target path, so if you move files before applying filter plugin then they may not match anymore. Target path is initially set to source path though. 
+Matching is done against target path, so if you move files before applying filter plugin then they may not match anymore. **Target path is initially set to source path.**
